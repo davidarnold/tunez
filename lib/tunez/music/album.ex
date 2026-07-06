@@ -1,5 +1,13 @@
 defmodule Tunez.Music.Album do
-  use Ash.Resource, otp_app: :tunez, domain: Tunez.Music, data_layer: AshPostgres.DataLayer
+  use Ash.Resource,
+    otp_app: :tunez,
+    domain: Tunez.Music,
+    data_layer: AshPostgres.DataLayer,
+    extensions: [AshJsonApi.Resource]
+
+  json_api do
+    type "album"
+  end
 
   postgres do
     table "albums"
